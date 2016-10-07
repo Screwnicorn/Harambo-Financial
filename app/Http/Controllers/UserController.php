@@ -9,4 +9,5 @@ class UserController extends Controller {
 	public function getem() {
 		return User::all();
 	}
+
 }

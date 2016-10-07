@@ -19,10 +19,8 @@ class HomeController extends Controller {
 	public function index() {
 
 		if (Auth::check()) {
-			return "NICE you are loged in :)";
+			return view('main/home');
 		}
-
 		return redirect('/login');
-
 	}
 }

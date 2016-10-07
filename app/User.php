@@ -26,4 +26,12 @@ class User extends Authenticatable {
 		'password', 'remember_token',
 	];
 
+	public function groupsOwned() {
+		return $this->hasMany('App\Group', 'owner_id');
+	}
+
+	public function groupsJoined() {
+		return $this->hasMany('App\GroupToUsers', 'user_id');
+	}
+
 }
