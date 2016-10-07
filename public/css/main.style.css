@@ -1,0 +1,35 @@
+#menu_icon{
+	 width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    transition-duration: 0.3s;
+}
+#menu_main_box:hover #menu_icon{
+	transition-duration: 0.3s;
+	 transform: scale(1.1, 1.1);
+}
+#welcome{
+	color:white;
+	font-size: 24px;
+	margin-top: 10px;
+}
+#header_main{
+/* IE10+ */ 
+background-image: -ms-linear-gradient(right, #FFE6C9 0%, #CA6EFF 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(right, #FFE6C9 0%, #CA6EFF 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(right, #FFE6C9 0%, #CA6EFF 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #FFE6C9), color-stop(100, #CA6EFF));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(right, #FFE6C9 0%, #CA6EFF 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to left, #FFE6C9 0%, #CA6EFF 100%);
+}
