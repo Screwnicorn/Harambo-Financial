@@ -11,7 +11,7 @@ class CreateEntryTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('entry', function (Blueprint $table) {
+		Schema::create('entrys', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('group_id');
 			$table->integer('user_id');
