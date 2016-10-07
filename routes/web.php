@@ -16,4 +16,10 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/users', 'UserController@getem');
 
-Route::get('/groups', 'GroupController@allGroups');
+Route::get('/groups', 'GroupController@myGroups');
+
+Route::post('groups/add', 'GroupController@add');
+Route::get('groups/add', 'GroupController@create');
+
+Route::get('groups/join', 'GroupController@join');
+Route::get('groups/{id}', 'GroupController@view');

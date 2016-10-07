@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller {
@@ -12,15 +13,18 @@ class GroupController extends Controller {
 		$this->middleware('auth');
 	}
 
-	public function create(Request $request) {
-		$user_id = Auth::user()->user_id;
+	public function create() {
 
-		$group = new Group;
-		$group->owner_id = $user_id;
+		return view('main.groups.add');
+	}
 
-		// complete generating stuff here ;)
+	public function add(Request $request) {
 
-		return back();
+		$this->validate($request, [
+			'name' => 'required|max:255|min:3|unique:groups',
+		]);
+
+		return Auth::user()->saveGroup($request);
 	}
 
 	public function allGroups() {
@@ -28,7 +32,14 @@ class GroupController extends Controller {
 	}
 
 	public function myGroups() {
-		Auth::user()->groupsOwned;
+		$groups = Auth::user()->groupsOwned;
+		return view('main.groups.groups', compact('groups'));
+	}
+
+	public function view($id) {
+		$g = Group::find($id);
+		$users = $g->getAllUsers();
+		return view('main.groups.individual', compact('users', 'g'));
 	}
 
 	public function joinGroup() {

@@ -24,6 +24,6 @@ class CreateGroupToUserRef extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('G2Ur');
+		Schema::dropIfExists('group_to_users');
 	}
 }

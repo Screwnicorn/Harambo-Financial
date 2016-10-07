@@ -12,7 +12,7 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" type="text/css" href="css/main.style.css">
+		<link rel="stylesheet" type="text/css" href="{{ url('css/main.style.css') }}">
 	</head>
 	<!--HEADER-->
 		<body>
@@ -31,7 +31,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="#"> Home </a></li>
-						<li><a href="#"> Groups </a></li>
+						<li><a href="{{ url('groups') }} "> Groups </a></li>
 						<li><a href="#"> Entrys</a></li>
 					</ul>
 				</li>
@@ -39,8 +39,9 @@
 			</div>
 		</nav>
 		<!-- BODY -->
-
+		<div class = "container">
 		@yield('content')
+		</div>
 
 	</body>
 </html>
