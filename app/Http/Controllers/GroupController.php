@@ -19,6 +19,7 @@ class GroupController extends Controller {
 	}
 
 	public function add(Request $request) {
+		// make a new group
 
 		$this->validate($request, [
 			'name' => 'required|max:255|min:3|unique:groups',
@@ -28,16 +29,12 @@ class GroupController extends Controller {
 	}
 
 	public function allGroups() {
-		return Group::all();
-	}
-
-	public function myGroups() {
-		$groups = Auth::user()->groupsOwned;
+		$groups = Group::all();
 		return view('main.groups.groups', compact('groups'));
 	}
 
 	public function view($id) {
-		$g = Group::find($id);
+		$g = Group::where('slug', $id)->first();
 		$users = $g->getAllUsers();
 		return view('main.groups.individual', compact('users', 'g'));
 	}

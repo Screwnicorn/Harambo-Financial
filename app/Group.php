@@ -19,6 +19,7 @@ class Group extends Model {
 	}
 
 	public function getAllUsers() {
+		// This need refactoring very bad code :(
 		$gts = $this->getGroupToUsers;
 
 		foreach ($gts as $g) {

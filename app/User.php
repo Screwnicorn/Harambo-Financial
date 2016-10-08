@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\GroupToUsers;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -15,7 +16,7 @@ class User extends Authenticatable {
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'email', 'password', 'surname', 'accessLevel',
+		'name', 'email', 'password', 'surname', 'accessLevel', 'slug',
 	];
 
 	/**
@@ -32,9 +33,10 @@ class User extends Authenticatable {
 		$g->owner_id = $this->id;
 		$g->name = $request['name'];
 		$g->verif = Group::generateCode(7);
+		$g->slug = str_slug($request['name'], ".");
 		$g->save();
 		$this->addRelationshipToGroup($g);
-		return $g->id;
+		return $g;
 
 	}
 
@@ -45,12 +47,19 @@ class User extends Authenticatable {
 		$gtu->save();
 	}
 
+	public function getUserToGroup() {
+		return $this->hasMany('App\GroupToUsers', 'user_id');
+	}
+
 	public function groupsOwned() {
 		return $this->hasMany('App\Group', 'owner_id');
 	}
 
 	public function groupsJoined() {
-		return $this->hasMany('App\GroupToUsers', 'user_id');
+		// This need refactoring very bad code :(
+		$gts = $this->getUserToGroup();
+
+		return $gts;
 	}
 
 	public function entrys() {

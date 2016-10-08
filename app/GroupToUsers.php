@@ -11,7 +11,7 @@ class GroupToUsers extends Model {
 	public $timestamps = false;
 
 	public function group() {
-		return $this->hasOne('App\Group', 'group_id');
+		return $this->hasOne('App\Group', 'id', 'group_id');
 	}
 
 	public function user() {

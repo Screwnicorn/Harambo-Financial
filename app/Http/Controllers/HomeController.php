@@ -19,7 +19,16 @@ class HomeController extends Controller {
 	public function index() {
 
 		if (Auth::check()) {
-			return view('main/home');
+
+			$mygroupsowner = Auth::user()->groupsOwned;
+			$mygroupsjoined = Auth::user()->getUserToGroup;
+
+			// bad code :(
+			foreach ($mygroupsjoined as $m) {
+				$m->group;
+			}
+
+			return view('main/home', compact('mygroupsowner', 'mygroupsjoined'));
 		}
 		return redirect('/login');
 	}

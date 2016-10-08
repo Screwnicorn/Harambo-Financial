@@ -16,6 +16,7 @@ class CreateGroupsTable extends Migration {
 			$table->integer('owner_id');
 			$table->string('name')->unique();
 			$table->string('verif');
+			$table->string('slug')->unique();
 			$table->timestamps();
 		});
 	}

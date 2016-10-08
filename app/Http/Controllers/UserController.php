@@ -10,4 +10,10 @@ class UserController extends Controller {
 		return User::all();
 	}
 
+	public function view($slug) {
+		$user = User::where('slug', $slug)->first();
+
+		return $user;
+	}
+
 }

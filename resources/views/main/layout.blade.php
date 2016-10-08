@@ -30,9 +30,16 @@
 						<div id="menu_icon"></div>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"> Home </a></li>
+						<li><a href="{{ url('/') }}"> Home </a></li>
 						<li><a href="{{ url('groups') }} "> Groups </a></li>
 						<li><a href="#"> Entrys</a></li>
+						<li><a href="{{url('/logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();"> Logout</a>
+						    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+
+					</li>
 					</ul>
 				</li>
 				</ul>
